@@ -1,0 +1,16 @@
+<div class="ui menu">
+  <img class="item" routerLink="home" routerLinkActive="active" src="assets/logo.png">
+  <a routerLink="offers" routerLinkActive="active" class="item">Offers</a>
+  <a *ngIf="isLoggedIn()" routerLink="inquiries" routerLinkActive="active" class="item">Inquiries</a>
+  <div class="right menu">
+    <a *ngIf="!isLoggedIn()" routerLink="login" routerLinkActive="active" class="item">Login</a>
+    <a *ngIf="isLoggedIn()" (click)="logout()" class="item">Logout</a>
+  </div>
+</div>
+<div class="ui container ">
+  <router-outlet></router-outlet>
+</div>
+
+
+
+

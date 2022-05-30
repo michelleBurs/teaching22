@@ -1,0 +1,54 @@
+
+<button class="ui button" routerLink="/offers">Back to offers</button>
+
+<h1 *ngIf="!isUpdatingOffer">Add a new offer</h1>
+<h1 *ngIf="isUpdatingOffer">Edit offer</h1>
+<p>Here you can enter all information about your offer</p>
+<form class="ui large form" [formGroup]="offerForm" (ngSubmit)="submitForm()">
+  <input type="hidden" formControlName="id">
+  <div class="field">
+    <label>Titel</label>
+    <input formControlName="title">
+    <div *ngIf="errors['title']" class="ui negative message">{{errors['title']}}</div>
+  </div>
+
+  <div class="field">
+    <label>Description</label>
+    <textarea formControlName="description" rows="3"></textarea>
+  </div>
+
+  <div class="field">
+    <label>Datum</label>
+    <input type="date" id="date" name="date" formControlName="date">
+    <div *ngIf="errors['date']" class="ui negative message">{{errors['date']}}</div>
+  </div>
+
+  <div class="field">
+    <label>Starttime</label>
+    <input type="time" id="startTime" name="startTime" formControlName="startTime">
+    <div *ngIf="errors['startTime']" class="ui negative message">{{errors['startTime']}}</div>
+  </div>
+
+  <div class="field">
+    <label>Endtime</label>
+    <input type="time" id="endTime" name="endTime" formControlName="endTime">
+    <div *ngIf="errors['endTime']" class="ui negative message">{{errors['endTime']}}</div>
+  </div>
+
+  <div class="field" [formGroup]="imageForm">
+    <label>Image</label>
+    <input type="hidden" formControlName="id">
+    <input formControlName="url" placeholder="http://image_url.jpg">
+  </div>
+
+  <div class="field">
+    <label>Course</label>
+    <select id="course" name="course" formControlName="course_id">
+      <option *ngFor="let course of courses" value={{course.id}}>{{course.title}}</option>
+    </select>
+    <div *ngIf="errors['course_id']" class="ui negative message">{{errors['course_id']}}</div>
+  </div>
+
+  <button type="submit" class="ui button" [disabled]="offerForm.invalid">Speichern</button>
+
+</form>

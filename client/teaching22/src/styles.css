@@ -1,0 +1,344 @@
+/* general */
+body {
+  font-family: 'Quicksand', sans-serif !important;
+  color: rgba(0, 0, 0, 0.8) !important;
+}
+
+.ui.container {
+  padding-top: 30px;
+}
+
+.button {
+  background-color: #e9c681 !important;
+  color: rgba(0, 0, 0, 0.8) !important;
+  margin: 20px 0 !important;
+}
+
+.button:hover {
+  background-color: #efcc86 !important;
+}
+
+.button:active {
+  background-color: #e5ba68 !important;
+}
+
+
+/* nav */
+div.ui.menu {
+  height: 100px;
+  margin: 0;
+  background-color: #e9c681;
+  justify-content: flex-start !important;
+}
+
+div.ui.menu .item {
+  height: 100%;
+  margin: 0;
+}
+
+div.ui.menu img {
+  padding: 10px;
+  width: auto;
+}
+
+div.ui.menu img:hover {
+  cursor: pointer;
+}
+
+div.ui.menu .item:hover {
+  background-color: #efcc86 !important;
+}
+
+div.ui.menu .item.active {
+  background-color: #e5ba68;
+}
+
+.ui.menu .item:before {
+  width: 0 !important;
+}
+
+
+/* home */
+.ui.container.home {
+  text-align: center;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+
+/* error page */
+.ui.container.errorpage {
+  text-align: center;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+
+/* login */
+.ui.container.login {
+  text-align: center;
+}
+
+.ui.container.login input {
+  width: 260px !important;
+}
+
+.ui.container.login .negative.message.mini {
+  width: 260px !important;
+  margin: 5px auto !important;
+}
+
+
+/* offer-list, inquiry-list */
+.hiddenHelper {
+  display: none !important;
+}
+
+.offer-list, .inquiry-list {
+  margin-top: 0 !important;
+  width: 900px !important;
+}
+
+.offer-list .btn {
+  margin: 0 auto !important;
+  display: flex;
+  justify-content: space-between;
+}
+
+.offer-list .cards, .inquiry-list .cards {
+  justify-content: flex-start;
+}
+
+.inquiry-list .card:hover {
+  cursor: auto !important;
+}
+
+@media (max-width: 649px) {
+  .offer-list .cards, .inquiry-list .cards {
+    justify-content: center;
+  }
+}
+
+.offer-list .cards .image {
+  width: 100% !important;
+  overflow: hidden !important;
+  height: 280px;
+}
+
+.offer-list .cards .grid .four, .inquiry-list .cards .grid .four {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.offer-list .cards .grid .four i, .inquiry-list .cards .grid .four i {
+  margin-right: 0;
+}
+
+.offer-list .selection, .inquiry-list .selection {
+  margin: 20px 0;
+}
+
+.offer-list .card .extra.status.open, .inquiry-list .card .extra.status.waiting {
+  background-color: #b0dde0;
+}
+
+.offer-list .card .extra.status.booked {
+  background-color: #e9c681;
+}
+
+.offer-list .card .extra.status.closed, .inquiry-list .card .extra.status.closed {
+  background-color: #e9b281;
+}
+
+.inquiry-list .card .extra.status.accepted {
+  background-color: #d5ffa9;
+}
+
+.inquiry-list .card .extra.status.rejected {
+  background-color: #ffaaaa;
+}
+
+.offer-list .card .extra.status, .inquiry-list .card .extra.status {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.inquiry-list .image {
+  width: 50px !important;
+  height: 50px !important;
+  object-fit: cover;
+  margin: 0 !important;
+  border-radius: 100% !important;
+
+}
+
+.inquiry-list .userPart {
+  display: flex !important;
+  justify-content: space-between !important;
+}
+
+.inquiry-list .status .button {
+  margin: 0 5px 0 0 !important;
+}
+
+.inquiry-list .status {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  position: relative !important;
+}
+
+.inquiry-list .status .btn {
+  position: absolute !important;
+  left: 14px !important;
+}
+
+.inquiry-list .status .statusText {
+  padding: 10px 14px !important;
+}
+
+
+/* dimmer */
+.dimmer {
+  color: white;
+}
+
+
+/* offer-detail */
+.detailview .image {
+  width: 210px !important;
+  height: 210px !important;
+  object-fit: cover;
+  margin: 0 !important;
+}
+
+.detailview .time {
+  margin-bottom: 20px !important;
+}
+
+.detailview .time .column {
+  background-color: #ffedcb;
+}
+
+.detailview .time .column.two {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+
+.detailview .status.open {
+  background-color: #b0dde0;
+}
+
+.detailview .status.booked {
+  background-color: #e9c681;
+}
+
+.detailview .status.closed {
+  background-color: #e9b281;
+}
+
+.detailview .status {
+  margin-bottom: 20px !important;
+  opacity: 50% !important;
+}
+
+.detailview .userPart .image {
+  width: 120px !important;
+  height: 120px !important;
+  margin: 0 auto !important;
+}
+
+
+.detailview .userPart {
+  background-color: #f3f1f1;
+  justify-content: center !important;
+  text-align: center;
+  padding: 40px 20px !important;
+  font-size: 10px;
+}
+
+.detailview .userPart h3 {
+  margin-top: 0 !important;
+}
+
+.detailview .meta {
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
+
+
+.detailview .iconList i {
+  margin-right: 20px !important;
+}
+
+.detailview .twoButtons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+
+@media (max-width: 767px) {
+  .detailview .column {
+    display: flex !important;
+    align-items: center !important;
+    flex-direction: column !important;
+    text-align: center;
+    flex-wrap: wrap;
+  }
+
+  .detailview .six {
+    flex-direction: column-reverse !important;
+  }
+
+  .detailview .userPart {
+    margin: 20px !important;
+  }
+
+  .detailview .time {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center;
+  }
+
+  .detailview .raised {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+}
+
+.detailview .rowHelper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: start !important;
+
+
+}
+
+.detailview .columnHelper {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.detailview .inq .image {
+  width: 80px !important;
+  height: auto !important;
+}
+
+.detailview > [class*="sixteen wide"].column {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.detailview .inq .column {
+  padding: 30px !important;
+  background-color: #f3f1f1 !important;
+
+}

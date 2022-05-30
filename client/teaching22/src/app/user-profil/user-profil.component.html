@@ -1,0 +1,5 @@
+<div *ngIf="authService.isLoggedIn()" class="ui right floated compact yellow segment">
+  <h4>{{currentUser?.firstName}} {{currentUser?.lastName}}</h4>
+  <p *ngIf="authService.isLector()" class="ui meta">Lector</p>
+  <p *ngIf="!authService.isLector()" class="ui meta">Student</p>
+</div>

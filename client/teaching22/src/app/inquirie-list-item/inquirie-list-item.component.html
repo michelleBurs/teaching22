@@ -1,0 +1,87 @@
+<!-- login/logout dimmers -->
+<div class="content">
+  <br>
+  <div class="header">For {{inquirie?.offer?.title}}</div>
+  <div class="meta">{{ inquirie?.offer?.course?.title }} </div>
+
+
+  <div class="extra content">
+    <div class="ui grid">
+      <div class="twelve wide column">
+        <div class="meta">{{ datePipe.transform(inquirie?.offer?.date, 'dd-MM-yyyy') }}
+          <br>
+          {{ datePipe.transform(inquirie?.offer?.startTime, 'hh:mm a')}}
+          - {{ datePipe.transform(inquirie?.offer?.endTime, 'hh:mm a') }}
+        </div>
+      </div>
+      <div class="four wide column">
+        <i class="clock outline icon"></i>
+      </div>
+    </div>
+    <button *ngIf="inquirie && inquirie.offer" [routerLink]="['../offers', inquirie.offer.id.toString()]"
+            class="ui button mini">Show this offer
+    </button>
+  </div>
+
+  <div class="ui inverted divider"></div>
+  <div class="ui grid">
+    <div class="ten wide column">
+      <div class="header">Inquiry</div>
+      <div class="meta">from {{ inquirie?.user?.firstName }} {{ inquirie?.user?.lastName }}</div>
+    </div>
+    <div class="six wide column">
+      <img class="ui image" *ngIf="inquirie && inquirie?.user?.image" [src]="inquirie?.user?.image?.url">
+    </div>
+  </div>
+
+
+  <div class="description"> {{ inquirie?.text }} </div>
+</div>
+
+<div class="extra content">
+  <div class="ui grid">
+    <div class="twelve wide column">
+      <div class="meta">{{ datePipe.transform(inquirie?.date, 'dd-MM-yyyy') }}
+        <br>
+        {{ datePipe.transform(inquirie?.startTime, 'hh:mm a')}}
+        - {{ datePipe.transform(inquirie?.endTime, 'hh:mm a') }}
+      </div>
+    </div>
+    <div class="four wide column">
+      <div *ngIf="otherTimerOrDate()" class="ui medium icon" data-tooltip="suggestion" data-position="bottom center">
+        <i  class="pencil alternate icon"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="extra content status" [id]="inquirie?.id">
+  <div class="btn">
+    <!--accept -->
+    <div *ngIf="authService.isLector() && inquirie?.status == 1">
+      <div class="ui medium icon button" data-tooltip="accept inquiry"  data-position="bottom center" (click)="updateStatus(2)">
+        <i class="check icon"></i>
+      </div>
+
+      <!--reject -->
+      <div class="ui medium icon button" data-tooltip="reject inquiry"  data-position="bottom center" (click)="updateStatus(3)">
+        <i class="times icon"></i>
+      </div>
+    </div>
+
+    <!--successfully -->
+    <div *ngIf="authService.isLector() && inquirie?.status == 2">
+      <div class="ui medium icon button" data-tooltip="successfully performed"  data-position="bottom center" (click)="updateStatus(4)">
+        <i class="smile outline icon"></i>
+      </div>
+      <!-- not successfull -->
+      <div class="ui medium icon button" data-tooltip="not successfully performed"  data-position="bottom center" (click)="updateStatus(5)">
+        <i class="meh outline icon"></i>
+      </div>
+    </div>
+  </div>
+  <div class="statusText">
+    <div class="description"> {{getStatusString()}}</div>
+  </div>
+</div>
+

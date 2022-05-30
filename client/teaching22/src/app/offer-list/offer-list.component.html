@@ -1,0 +1,51 @@
+<div class="ui container offer-list">
+  <h1 *ngIf="authService.isLoggedOut() || !authService.isLector()">Discover Offers</h1>
+  <p *ngIf="authService.isLoggedOut() || !authService.isLector()">Here you will find a collection of all exhibited
+    offers. Browse through the various topics and find your personal study hero!</p>
+
+  <h1 *ngIf="authService.isLoggedIn() && authService.isLector()">Your Offers</h1>
+  <p *ngIf="authService.isLoggedIn() && authService.isLector()">Here you will find a collection of your exhibited
+    offers. Tip: Use the filter for a better overview!</p>
+
+  <div class="btn">
+    <button *ngIf="authService.isLoggedIn() && authService.isLector()" routerLink="/admin"
+            class="ui tiny yellow labeled icon button">
+      <i class="add icon"></i>Add offer
+    </button>
+
+    <div class="ui selection dropdown">
+      <input type="hidden" name="status">
+      <div class="text">all</div>
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        <div class="item active selected" data-value="all" (click)="changeOffersArray(0)">all</div>
+        <div class="item" data-value="open" (click)="changeOffersArray(1)">open</div>
+        <div class="item" data-value="booked" (click)="changeOffersArray(2)">booked</div>
+        <div class="item" data-value="closed" (click)="changeOffersArray(3)">closed</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="ui cards">
+    <ng-container *ngFor="let offer of offersByStatus?.reverse()">
+      <!-- is normal User -->
+      <a *ngIf="authService.isLoggedOut() && offer.status == 1" class="ts-offer-list-item ui card" [offer]="offer"
+         [routerLink]="offer.id.toString()"></a>
+
+      <!-- is Lector -->
+      <a *ngIf="authService.isLoggedIn() && authService.isLector() && offer.user_id == authService.getCurrentUserId()"
+         class="ts-offer-list-item ui card" [offer]="offer" [routerLink]="offer.id.toString()"></a>
+
+      <!-- is Student -->
+      <a *ngIf="authService.isLoggedIn() && !authService.isLector() && offer.status == 1"
+         class="ts-offer-list-item ui card" [offer]="offer" [routerLink]="offer.id.toString()"></a>
+    </ng-container>
+
+    <div *ngIf="!offers" class="ui active dimmer">
+      <div class="ui large text loader">Loading</div>
+    </div>
+
+    <p *ngIf="offers && !offers.length">Es sind keine Offers vorhanden.</p>
+  </div>
+
+</div>

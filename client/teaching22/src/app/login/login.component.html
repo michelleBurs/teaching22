@@ -1,0 +1,24 @@
+<div class="ui container login">
+  <img src="assets/login-illu.svg" class="ui image small centered">
+  <br>
+  <h1>Login</h1>
+  <form class="ui large form" [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="field">
+      <input class="ui input" type="email" id="email" formControlName="email" placeholder="Email">
+      <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty ||
+           loginForm.get('email')?.touched) && loginForm.get('email')?.hasError('required')"
+           class="ui negative message mini">You must enter an email</div>
+      <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty ||
+      loginForm.get('email')?.touched) && loginForm.get('email')?.hasError('email')"
+           class="ui negative message mini">Check your email</div>
+    </div>
+
+    <div class="field">
+      <input class="ui input" type="password" formControlName="password" placeholder="Password">
+      <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty ||
+      loginForm.get('password')?.touched)" class="ui negative message mini ">You must enter a password</div>
+    </div>
+
+    <button type="submit" class="ui button" [disabled]="loginForm.invalid">Login</button>
+  </form>
+</div>

@@ -1,0 +1,70 @@
+<div class="ui grid detailview stackable" *ngIf="offer">
+  <div *ngIf="authService.isLoggedIn() && authService.isLector()"
+       class="sixteen wide column center aligned status">{{designStatus()}}</div>
+  <div class="twelve wide column">
+    <div class="ui grid stackable">
+      <div class="six wide column">
+        <img class="ui medium rounded image" *ngIf="offer && offer.image" [src]="offer.image.url">
+        <button class="ui button" routerLink="/offers">Back to offers</button>
+      </div>
+
+      <div class="ten wide column">
+        <div class="twoButtons">
+          <button *ngIf="authService.isLoggedIn() && authService.isLector()" data-tooltip="delete offer"
+                  data-position="bottom center" class="ui medium icon button"
+                  (click)="removeOffer()"><i class="remove icon"></i>
+          </button>
+          <button *ngIf="authService.isLoggedIn() && authService.isLector()" data-tooltip="edit offer"
+                  data-position="bottom center" class="ui medium icon button"
+                  [routerLink]="['../../admin', offer?.id]"><i class="write icon"></i>
+          </button>
+        </div>
+        <h1 class="ui header">{{ offer?.title }}</h1>
+        <div class="ui divider"></div>
+        <div class="ui meta">{{offer?.course?.title}}</div>
+        <br>
+        <p class="ui description">{{ offer?.description }}</p>
+        <br>
+        <div class="time ui grid">
+          <br>
+          <div class="eight wide column">
+
+            <div class="meta">{{ datePipe.transform(offer?.date, 'dd-MM-yyyy') }} <br>
+              {{ datePipe.transform(offer?.startTime, 'hh:mm a')}}
+              - {{ datePipe.transform(offer?.endTime, 'hh:mm a') }}
+            </div>
+
+          </div>
+          <br>
+          <div class="two wide column">
+
+            <i class="clock outline icon"></i>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="four wide column userPart">
+    <img class="ui circular centered image" *ngIf="offer && offer.user && offer.user.image"
+         [src]="offer?.user?.image?.url">
+    <br>
+    <div>With</div>
+    <h3 class="ui header">{{offer?.user?.firstName}} {{offer?.user?.lastName}}</h3>
+    <div>{{offer?.user?.education}}</div>
+    <br>
+    <i class="icon language"></i>
+    <p>{{offer?.user?.language}}</p>
+
+    <div *ngIf="authService.isLoggedIn()">
+      <i class="icon phone"></i>
+      <p>{{offer?.user?.phoneNumber}}</p>
+
+      <i class="icon envelope open"></i>
+      <p>{{offer?.user?.email}}</p>
+    </div>
+  </div>
+
+  <div *ngIf="authService.isLoggedIn() && !authService.isLector() && offer?.status ==1" [offer]="offer"
+       class="sixteen wide column ts-inquiry-form withoutPadding"></div>
+</div>

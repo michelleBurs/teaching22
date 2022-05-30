@@ -1,0 +1,29 @@
+<div class="image">
+  <img class="ui tiny image" *ngIf="offer && offer.image" [src]="offer.image.url">
+</div>
+
+<div class="content">
+  <div class="header">{{ offer?.title }}</div>
+  <div class="meta">{{ offer?.course?.title }} </div>
+  <div class="description"> {{ offer?.description }} </div>
+</div>
+
+<div class="extra content">
+  <div class="ui grid">
+    <div class="twelve wide column">
+      <div class="meta">{{ datePipe.transform(offer?.date, 'dd-MM-yyyy') }}
+        <br>
+        {{ datePipe.transform(offer?.startTime, 'hh:mm a')}} - {{ datePipe.transform(offer?.endTime, 'hh:mm a') }}
+      </div>
+    </div>
+    <div class="four wide column">
+      <i class="clock outline icon"></i>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="authService.isLoggedIn() && authService.isLector()" class="extra content status" [id]="offer?.id">
+    <div class="description">
+      {{getStatusString()}}
+    </div>
+</div>

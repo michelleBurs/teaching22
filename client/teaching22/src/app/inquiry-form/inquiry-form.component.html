@@ -1,0 +1,50 @@
+<div class="ui inq segment raised">
+  <form class="ui  form" [formGroup]="inquirieForm" (ngSubmit)="submitForm()">
+
+    <div class="ui grid stackable">
+
+      <div class="five wide column">
+        <img src="assets/send-illu.svg" class="ui image mini centered">
+
+        <h3>Send an enquiry for this offer!</h3>
+        <p>You are interested? Then send me an inquiry in any case! If the date I suggested doesn't suit you, send me a
+          counter-proposal. Let's see what we can do. :)</p>
+        <br>
+      </div>
+
+      <div class="eleven wide column data">
+        <div class="rowHelper">
+          <div class="columnHelper">
+            <input type="hidden" formControlName="id">
+
+            <div class="field">
+              <label>Datum</label>
+              <input type="date" id="date" name="date" formControlName="date">
+              <div *ngIf="errors['date']" class="ui negative message">{{errors['date']}}</div>
+            </div>
+
+            <div class="field">
+              <label>Starttime</label>
+              <input type="time" id="startTime" name="startTime" formControlName="startTime">
+              <div *ngIf="errors['startTime']" class="ui negative message">{{errors['startTime']}}</div>
+            </div>
+
+            <div class="field">
+              <label>Endtime</label>
+              <input type="time" id="endTime" name="endTime" formControlName="endTime">
+              <div *ngIf="errors['endTime']" class="ui negative message">{{errors['endTime']}}</div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Comment</label>
+            <textarea formControlName="text" rows="3"></textarea>
+          </div>
+
+          <button type="submit" class="ui button" [disabled]="inquirieForm.invalid">Send</button>
+
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
